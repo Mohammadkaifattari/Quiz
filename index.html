@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1 style="text-align: center;">JavaScript Quiz: About Objects</h1>
+       <button id="replay" onclick=" restartQuiz()">REPLAY</button>
     <p style="font-size: 30px; margin-top: 80px;" id="question"></p>
+ 
+<p id="tt"></p>
+    <ul id="options">
 
-    <ul id="options" >
-       
-     
+
     </ul>
+
     <br>
     <br>
     <p id="score" style="font-size: 20px;"></p>
-    <button onclick="nextone()">Next Question</button>
+    <button onclick="nextone()" id="nextbtn">Next Question</button>
+    
     <script src="apps.js"></script>
 </body>
+
 </html>

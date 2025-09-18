@@ -55,45 +55,126 @@ var quiz = [
 var quiznum = 0;
 var score = 0;
 var scoreel = document.getElementById("score");
-scoreel.innerHTML = score;
+correctanswerof = null
+var nextbtn = document.getElementById("nextbtn")
+var optionsElement = document.getElementById("options");
+var restartbtn = document.getElementById("replay")
+wrongAnswers = []
 
 function render() {
+  if (quiznum >= quiz.length) {  
+    optionsElement.innerHTML = "";
+    nextbtn.style.display = "none";
+    restartbtn.style.display = "block";
+    scoreel.innerHTML = "";
+
+    //scre check
+    let msg = "";
+    if (score < 60) {
+        msg = "❌ You scored " + score + ". Try again, you failed!";
+    } else {
+        msg = "✅ Congratulations! You passed with score " + score;
+    }
+
+     let wrongList = "<h3>❌ Wrong Answers:</h3><ul>";
+        for (let i = 0; i < wrongAnswers.length; i++) {
+            wrongList += `<li>
+                <b>Q:</b> ${wrongAnswers[i].question}<br>
+                <b>Your Answer:</b> ${wrongAnswers[i].yourAnswer}<br>
+                <b>Correct Answer:</b> ${wrongAnswers[i].correctAnswer}
+            </li><br>`;
+        }
+        wrongList += "</ul>";
+ document.getElementById("tt").style.display= "block"
+        document.getElementById("question").innerHTML = msg + "<br><br>" + wrongList;
+        return;
+}
+
     var questionelement = document.getElementById("question");
     questionelement.innerHTML = quiz[quiznum].question;
 
 
-    var optionsElement = document.getElementById("options");
     optionsElement.innerHTML = ""
-
+    
     for (let i = 0; i < quiz[quiznum].options.length; i++) {
         optionsElement.innerHTML += `
           <li 
-            onclick="colour('${quiz[quiznum].options[i]}', this)" 
+            onclick="colour(event) " class = "non-active" data-index="${i}"
             style="cursor:pointer; padding:8px; border:1px solid #ccc; margin:5px; border-radius:5px; list-style:none; font-size:18px;"
           >
-            ${quiz[quiznum].options[i]}
+          ${quiz[quiznum].options[i]}
           </li>`;
-    }
+        }
 }
 
-function colour(selectedOption, element) {
-    let correct = quiz[quiznum].correct.trim();
+function colour(event) {
+   event.target.classList.add("active")
+console.log(event.target.classList);
 
-    if (selectedOption== correct) {
-        score += 10; 
-        scoreel.innerHTML = score; 
-        element.style.background = "#55efc4"; 
-        element.style.borderColor = "#00b894";
+   
+   
+    for(var i = 0; i < optionsElement.children.length ; i++ ){
+        if(event.target !== optionsElement.children[i]){
+            optionsElement.children[i].classList.remove("active")
+        }
+    }
+    
+    
+    correctanswerof=event.target
+   
+     nextbtn.classList.add("show");
+    
+}
+function nextone() { 
+
+    if (quiz[quiznum].correct == correctanswerof.innerText.trim()) {
+        score+=10
+        
     } else {
-        element.style.background = "#fab1a0"; 
-        element.style.borderColor = "#d63031";
-    }
-
-
-}
-function nextone() {  quiznum++
+        // agar answer galat hai to store karo
+        wrongAnswers.push({
+            question: quiz[quiznum].question,
+            yourAnswer: correctanswerof.innerText.trim(),
+            correctAnswer: quiz[quiznum].correct
+        });}
+    
+    
+    scoreel.innerHTML = score;
+    quiznum++
+    nextbtn.classList.remove("show");
     render()
     
 }  
 
 render();
+
+function restartQuiz() {
+
+    quiznum = 0;
+    score = 0;
+    scoreel.innerHTML = score;
+   
+    render();
+    restartbtn.style.display = "none"
+  
+}
+
+document.addEventListener("keydown", function (e) {
+    let key = e.key.toLowerCase();
+
+    
+    if (["a", "b", "c", "d"].includes(key)) {
+        let index = key.charCodeAt(0) - 97; 
+        let option = optionsElement.children[index];
+        if (option) {
+            option.click(); 
+        }
+    }
+
+    // Enter press 
+    if (e.key === "Enter") {
+        if (nextbtn.classList.contains("show")) {
+            nextone()
+        }
+    }
+});

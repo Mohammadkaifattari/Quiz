@@ -1,0 +1,107 @@
+ body {
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom, #020024, #090979, #00D4FF);
+}
+        .active {
+            background-color: #005fb88f!important;
+            color: white!important;
+        }
+        .non-active{
+            background-color: white;
+        }
+        #nextbtn{
+
+        }
+        h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+#question {
+  color: #ffeb3b;
+  font-weight: bold;
+ text-align: center;
+ list-style: none;
+ 
+}
+#options{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+}
+#options li {
+  background: #ffffff;
+  color: #333;
+  transition: 0.3s;
+  width: 400px;
+  text-align: center;
+
+}
+#options li:hover {
+  background: #ff0000;
+  color: white;
+}
+.active {
+  background-color: #1565c0 !important;
+  color: white;
+}
+#score {
+  color: #76ff03;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  margin-right: 30px;
+}
+#replay{ background: linear-gradient(to right, #eaff00, #c8ff00a9);
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 580px;
+ display: none;
+
+}
+#replay:hover{
+  background: linear-gradient(to right, #0099ff, #2402bc);
+  box-shadow: 0px 4px 15px rgba(0, 114, 255, 0.6);
+}
+#nextbtn {
+  background: linear-gradient(to right, #eaff00, #c8ff00a9);
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 580px;
+ 
+}
+#tt{ display: none;
+     list-style: none;
+    
+     background: linear-gradient(to right, #c8ff00a9, #eaff00);
+  box-shadow: 0px 4px 15px rgba(0, 114, 255, 0.6);
+
+}
+#nextbtn:hover {
+  background: linear-gradient(to right, #c8ff00a9, #eaff00);
+  box-shadow: 0px 4px 15px rgba(0, 114, 255, 0.6);
+}
+#nextbtn {
+  visibility: hidden;           /* hidden rakho */
+  opacity: 0;
+  transform: translateY(40px);  /* neeche se start */
+  transition: all 0.4s ease-in-out;
+}
+
+#nextbtn.show {
+  visibility: visible;          /* show karega */
+  opacity: 1;
+  transform: translateY(0);     /* upar slide */
+}
