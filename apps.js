@@ -51,6 +51,7 @@ var quiz = [
     }
 ];
 
+alert("Make Sure To Click A , B , C , D For Selection  & ENTER button For Next")
 
 var quiznum = 0;
 var score = 0;
