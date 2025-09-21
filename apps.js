@@ -51,7 +51,7 @@ var quiz = [
     }
 ];
 
-alert("Make Sure To Click A , B , C , D For Selection  & ENTER button For Next")
+
 
 var quiznum = 0;
 var score = 0;
@@ -77,12 +77,12 @@ function render() {
         msg = "✅ Congratulations! You passed with score " + score;
     }
 
-     let wrongList = "<h3>❌ Wrong Answers:</h3><ul>";
+     let wrongList = "<h3>Your Wrong Answers</h3><ul>";
         for (let i = 0; i < wrongAnswers.length; i++) {
-            wrongList += `<li>
-                <b>Q:</b> ${wrongAnswers[i].question}<br>
-                <b>Your Answer:</b> ${wrongAnswers[i].yourAnswer}<br>
-                <b>Correct Answer:</b> ${wrongAnswers[i].correctAnswer}
+            wrongList += `<li style = "list-style: none;">
+               
+                <b></b> ${wrongAnswers[i].yourAnswer}<br>
+                
             </li><br>`;
         }
         wrongList += "</ul>";

@@ -62,7 +62,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 580px;
+  list-style: none;
  display: none;
 
 }
@@ -79,7 +79,8 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 580px;
+  margin-left: 100px;
+  
  
 }
 #tt{ display: none;
